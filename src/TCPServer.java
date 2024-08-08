@@ -5,9 +5,8 @@ public class TCPServer
     public static void main(String[] argv) throws Exception{
         String ClientSentence;
         String CapitalizedSentence;
-        ServerSocket welcomeSocket = new Socket(6789);
+        ServerSocket welcomeSocket = new Socket('Hostname',6789);
 
-        while(true){
             Socket connectionSocket = welcomeSocket.accept();
             BufferedReader inFromClient = new BufferedReader(new InputStreamReader(
                     connectionSocket.getInputStream()));
@@ -16,7 +15,6 @@ public class TCPServer
                             connectionSocket.getOutputStream());
             ClientSentence = inFromClient.readLine();
             CapitalizedSentence = ClientSentence.toUpperCase() + '\n';
-            outToClient.writeBytes(CapitalizedSentence);
+            OutToClient.writeBytes(CapitalizedSentence);
         }
     }
-}
